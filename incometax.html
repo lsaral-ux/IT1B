@@ -1,1 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assignment #2 - Income Tax Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+  <nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="conversion.html">Assignment #1</a>
+    <a href="incometax.html">Assignment #2</a>
+    <a href="looping.html">Assignment #3</a>
+    <a href="payroll.html">Assignment #4</a>
+  </nav>
+
+
+  <main class="content">
+    <h1>Assignment #2 - Income Tax Calculator</h1>
+
+    <p>Enter your taxable income:</p>
+    <input id="income" type="number" placeholder="Enter income">
+    <button onclick="computeTax()">Compute Tax</button>
+
+    <h3 id="result"></h3>
+  </main>
+
+  <script>
+  function computeTax() {
+    let income = document.getElementById('income').value * 1;
+    let tax = 0;
+
+    if (income <= 250000) tax = 0;
+    else if (income <= 400000) tax = (income - 250000) * 0.20;
+    else if (income <= 800000) tax = 30000 + (income - 400000) * 0.25;
+    else if (income <= 2000000) tax = 130000 + (income - 800000) * 0.30;
+    else if (income <= 8000000) tax = 490000 + (income - 2000000) * 0.32;
+    else tax = 2410000 + (income - 8000000) * 0.35;
+
+    document.getElementById('result').innerHTML = 'Income Tax: ₱' + tax.toFixed(2);
+  }
+  </script>
+
+</body>
+</html>
